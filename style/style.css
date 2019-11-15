@@ -1,0 +1,25 @@
+.game-start {
+    /* border: 1px solid black; */
+    width: 50%;
+    margin: 5rem auto;
+}
+
+.player {
+    display: inline-block;
+    width: 45%;
+    margin: 1rem 0;
+    height: 1rem;
+    padding: 1rem;
+    font-size: 16px;
+    
+}
+
+.btn-start {
+    font-size: 16px;
+    padding: 1rem 2rem;
+}
+
+.radios {
+    display: block;
+    margin: 2rem 0 ;
+}
