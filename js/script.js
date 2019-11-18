@@ -1,13 +1,21 @@
+/* eslint-disable no-alert */
+
 const input1 = document.querySelector('#player1');
 const input2 = document.querySelector('#player2');
 const btnStart = document.querySelector('#btn-start');
 const startGameSection = document.querySelector('#start-game-section');
 const tictactoe = document.querySelector('#tictactoe');
 const restart = document.querySelector('#restart');
+const cells = document.querySelectorAll('td[data-name]');
+
+
+
+// const cellTest = document.querySelector('td[data-name="1"]');
+
+// cellTest.addEventListener('click', test);
 
 // Player factory
 const Player = (name, mark) => {
-
   return { name, mark };
 };
 
@@ -47,6 +55,8 @@ const game = (() => {
 
 // Game Controller module
 const gameController = (() => {
+  const players = [];
+
   const startGame = () => {
     if (!input1.value && !input2.value) {
       return alert('Please fill up the players names!');
@@ -54,14 +64,15 @@ const gameController = (() => {
     const player1 = Player(input1.value, 'X');
     const player2 = Player(input2.value, 'O');
 
-    
-    return { player1, player2 };
-  };
-  
-  const render = () => {
+    players.push(player1, player2);
     startGameSection.classList.toggle('hidden');
     tictactoe.classList.toggle('hidden');
     
+    return { players };
+  };
+  
+  
+  const render = () => {
   };
   
   const restartGame = () => {
@@ -71,9 +82,28 @@ const gameController = (() => {
     input2.value = '';
   };
   
-  return { startGame, render, restartGame };
+  const test = function (e) {
+    console.log(e);
+    board.arr.forEach((key) => {
+      if (this.dataset.name === key) {
+        // key = player1.mark;
+        // console.log(key, players[0].mark);
+        // console.log(players);
+        board.arr[key] = players[0].mark;
+        console.log(board.arr);
+      }
+    });
+  };
+
+
+  return { startGame, render, restartGame, test };
 })();
 
+
+
+
+cells.forEach((cell) => cell.addEventListener('click', gameController.test));
+
 btnStart.addEventListener('click', gameController.startGame);
-btnStart.addEventListener('click', gameController.render);
+// btnStart.addEventListener('click', gameController.render);
 restart.addEventListener('click', gameController.restartGame);
