@@ -7,6 +7,8 @@ const startGameSection = document.querySelector('#start-game-section');
 const tictactoe = document.querySelector('#tictactoe');
 const restart = document.querySelector('#restart');
 const cells = document.querySelectorAll('td[data-name]');
+const endDiv = document.querySelector('.end-game');
+const endTitle = document.querySelector('#restart-title');
 
 
 
@@ -30,7 +32,6 @@ const board = (() => {
 
 // Game module
 const game = (() => {
-
   const checkHorizontal = (arr) => (
     (arr[0] === arr[1] && arr[1] === arr[2])
     || (arr[3] === arr[4] && arr[4] === arr[5])
@@ -45,9 +46,7 @@ const game = (() => {
     (arr[0] === arr[4] && arr[4] === arr[8])
     || (arr[6] === arr[4] && arr[4] === arr[2]));
 
-  const checkWinner = () => (checkDiagonal() || checkHorizontal() || checkVertical());
-
-
+  const checkWinner = (arr) => (checkDiagonal(arr) || checkHorizontal(arr) || checkVertical(arr));
 
   return { checkWinner };
 })();
@@ -55,7 +54,7 @@ const game = (() => {
 
 // Game Controller module
 const gameController = (() => {
-  const players = [];
+  let players = [];
   let turn = true;
   const startGame = () => {
     if (!input1.value && !input2.value) {
@@ -70,23 +69,23 @@ const gameController = (() => {
     
     return { players };
   };
-  
-  
-  const render = () => {
-    
 
-  };
-  
   const restartGame = () => {
     startGameSection.classList.toggle('hidden');
     tictactoe.classList.toggle('hidden');
+    endDiv.classList.toggle('hidden');
     input1.value = '';
     input2.value = '';
+    players = [];
     board.arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
     turn = true;
+    cells.forEach((cell) => {
+      cell.innerHTML = '';
+    });
   };
   
-  const test = function () {
+  // eslint-disable-next-line func-names
+  const render = function () {
     const currentPlayer = turn ? players[0] : players[1];
 
     board.arr.forEach((key) => {
@@ -94,15 +93,22 @@ const gameController = (() => {
         board.arr[key] = currentPlayer.mark;
         turn = !turn;
         cells[key].innerHTML = currentPlayer.mark;
+        // console.log(board.arr[key]);
+        if (game.checkWinner(board.arr)) {
+          // console.log('win!');
+          endDiv.classList.toggle('hidden');
+          endTitle.innerHTML = `${currentPlayer.name} wins!`;
+        }
+          
       }
     });
   };
 
 
-  return { startGame, render, restartGame, test };
+  return { startGame, render, restartGame };
 })();
 
-cells.forEach((cell) => cell.addEventListener('click', gameController.test));
+cells.forEach((cell) => cell.addEventListener('click', gameController.render));
 
 btnStart.addEventListener('click', gameController.startGame);
 // btnStart.addEventListener('click', gameController.render);
