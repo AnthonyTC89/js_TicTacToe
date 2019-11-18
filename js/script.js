@@ -56,7 +56,7 @@ const game = (() => {
 // Game Controller module
 const gameController = (() => {
   const players = [];
-
+  let turn = true;
   const startGame = () => {
     if (!input1.value && !input2.value) {
       return alert('Please fill up the players names!');
@@ -80,16 +80,23 @@ const gameController = (() => {
     tictactoe.classList.toggle('hidden');
     input1.value = '';
     input2.value = '';
+    board.arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
+    turn = true;
   };
   
   const test = function (e) {
     console.log(e);
     board.arr.forEach((key) => {
+
+      const currentPlayer = turn ? players[0] : players[1];
       if (this.dataset.name === key) {
         // key = player1.mark;
         // console.log(key, players[0].mark);
         // console.log(players);
-        board.arr[key] = players[0].mark;
+        
+        
+        board.arr[key] = currentPlayer.mark;
+        turn = !turn;
         console.log(board.arr);
       }
     });
