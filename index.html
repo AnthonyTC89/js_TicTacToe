@@ -8,19 +8,46 @@
   <title>Tic Tac Toe</title>
 </head>
 <body>
+  <header>
+    <h1 class="title">Tic Tac Toe</h1>
+  </header>
 
   <div class="container">
-    <h1 class="title">Tic Tac Toe</h1>
-    <div class="game-start">
-      <input type="text" class="player" id="player1" placeholder="player1">
-      <input type="text" class="player" id="player2" placeholder="player2">
-      <div class="radios">
-        Mark: 
-        X <input type="radio" class="mark-radio" name="mark-radio" value="X">
-        O <input type="radio" class="mark-radio" name="mark-radio" value="O">
-      </div>
+
+    <section class="game-start" id="start-game-section">
+      <input type="text" class="player" id="player1" placeholder="Player 1">
+      <input type="text" class="player" id="player2" placeholder="Player 2">
       <button class="btn-start" id="btn-start">Start game</button>
-    </div>
+    </section>
+    
+    <section class="game hidden" id="tictactoe">
+      <table class="table">
+        <tbody>
+          <tr class="trow">
+            <td class="tcell" data-key="0" data-name="0">1</td>
+            <td class="tcell" data-key="1" data-name="1">2</td>
+            <td class="tcell" data-key="2" data-name="2">3</td>
+          </tr>
+
+          <tr class="trow">
+            <td class="tcell" data-key="3" data-name="3">4</td>
+            <td class="tcell" data-key="4" data-name="4">5</td>
+            <td class="tcell" data-key="5" data-name="5">6</td>
+          </tr>
+
+          <tr class="trow">
+            <td class="tcell" data-key="6" data-name="6">7</td>
+            <td class="tcell" data-key="7" data-name="7">8</td>
+            <td class="tcell" data-key="8" data-name="8">9</td>
+          </tr>
+          
+        </tbody>
+      </table>
+
+      <button id="restart">restart</button>
+    </section>
+
+
   </div>
   
   <script src="js/script.js"></script>

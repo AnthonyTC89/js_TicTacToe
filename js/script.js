@@ -1,74 +1,79 @@
-const player1 = document.querySelector('#player1');
-const player2 = document.querySelector('#player2');
+const input1 = document.querySelector('#player1');
+const input2 = document.querySelector('#player2');
 const btnStart = document.querySelector('#btn-start');
+const startGameSection = document.querySelector('#start-game-section');
+const tictactoe = document.querySelector('#tictactoe');
+const restart = document.querySelector('#restart');
 
 // Player factory
 const Player = (name, mark) => {
-  const getName = () => name;
-  const setMark = () => mark;
-  const getMark = () => mark;
-  return { getName, getMark, setMark };
+
+  return { name, mark };
 };
 
 // Board module
 const board = (() => {
   const arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
-  const saveMark = (mark, pos) => arr[pos] = mark;
+  const saveMark = (mark, pos) => {
+    arr[pos] = mark;
+  };
   return { saveMark, arr };
 })();
 
 // Game module
 const game = (() => {
-  const player1 = Player('Anthony', 'X');
-  const player2 = Player('Redvan', 'O');
 
-  const checkHorizontal = () => (
-    (board.arr[0] === board.arr[1] && board.arr[1] === board.arr[2])
-    || (board.arr[3] === board.arr[4] && board.arr[4] === board.arr[5])
-    || (board.arr[6] === board.arr[7] && board.arr[7] === board.arr[8]));
+  const checkHorizontal = (arr) => (
+    (arr[0] === arr[1] && arr[1] === arr[2])
+    || (arr[3] === arr[4] && arr[4] === arr[5])
+    || (arr[6] === arr[7] && arr[7] === arr[8]));
 
-  const checkVertical = () => (
-    (board.arr[0] === board.arr[3] && board.arr[3] === board.arr[6])
-    || (board.arr[1] === board.arr[4] && board.arr[4] === board.arr[7])
-    || (board.arr[2] === board.arr[5] && board.arr[5] === board.arr[8]));
+  const checkVertical = (arr) => (
+    (arr[0] === arr[3] && arr[3] === arr[6])
+    || (arr[1] === arr[4] && arr[4] === arr[7])
+    || (arr[2] === arr[5] && arr[5] === arr[8]));
 
-  const checkDiagonal = () => (
-    (board.arr[0] === board.arr[4] && board.arr[4] === board.arr[8])
-    || (board.arr[6] === board.arr[4] && board.arr[4] === board.arr[2]));
+  const checkDiagonal = (arr) => (
+    (arr[0] === arr[4] && arr[4] === arr[8])
+    || (arr[6] === arr[4] && arr[4] === arr[2]));
 
   const checkWinner = () => (checkDiagonal() || checkHorizontal() || checkVertical());
 
-  // const checkEmptySpace = () => {
-  //   board.arr.forEach((num) => {
 
-  //   });
-  // };
 
-  // const checkDraw = () => {
-
-  // };
-
-  return { player1, player2, checkWinner };
+  return { checkWinner };
 })();
 
-// 0 1 2
-// 3 4 5
-// 6 7 8
 
-function render() {
-  const playerX = Player(player1.value, Player.getMark);
-  // const playerO = Player(player2.value, Player.setMark('O'));
+// Game Controller module
+const gameController = (() => {
+  const startGame = () => {
+    if (!input1.value && !input2.value) {
+      return alert('Please fill up the players names!');
+    }
+    const player1 = Player(input1.value, 'X');
+    const player2 = Player(input2.value, 'O');
+
+    
+    return { player1, player2 };
+  };
   
+  const render = () => {
+    startGameSection.classList.toggle('hidden');
+    tictactoe.classList.toggle('hidden');
+    
+  };
   
-  console.log(playerX, 'Game started!');
-}
+  const restartGame = () => {
+    startGameSection.classList.toggle('hidden');
+    tictactoe.classList.toggle('hidden');
+    input1.value = '';
+    input2.value = '';
+  };
+  
+  return { startGame, render, restartGame };
+})();
 
-console.log(game.player1.getMark());
-console.log(game.player2.getMark());
-
-console.log(game.checkWinner());
-// console.log('empty space: ', game.checkEmptySpace());
-
-// player1.addEventListener
-
-btnStart.addEventListener('click', render);
+btnStart.addEventListener('click', gameController.startGame);
+btnStart.addEventListener('click', gameController.render);
+restart.addEventListener('click', gameController.restartGame);
