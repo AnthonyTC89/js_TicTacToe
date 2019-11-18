@@ -73,6 +73,8 @@ const gameController = (() => {
   
   
   const render = () => {
+    
+
   };
   
   const restartGame = () => {
@@ -84,20 +86,14 @@ const gameController = (() => {
     turn = true;
   };
   
-  const test = function (e) {
-    console.log(e);
-    board.arr.forEach((key) => {
+  const test = function () {
+    const currentPlayer = turn ? players[0] : players[1];
 
-      const currentPlayer = turn ? players[0] : players[1];
+    board.arr.forEach((key) => {
       if (this.dataset.name === key) {
-        // key = player1.mark;
-        // console.log(key, players[0].mark);
-        // console.log(players);
-        
-        
         board.arr[key] = currentPlayer.mark;
         turn = !turn;
-        console.log(board.arr);
+        cells[key].innerHTML = currentPlayer.mark;
       }
     });
   };
@@ -105,9 +101,6 @@ const gameController = (() => {
 
   return { startGame, render, restartGame, test };
 })();
-
-
-
 
 cells.forEach((cell) => cell.addEventListener('click', gameController.test));
 
