@@ -10,16 +10,8 @@ const cells = document.querySelectorAll('td[data-name]');
 const endDiv = document.querySelector('.end-game');
 const endTitle = document.querySelector('#restart-title');
 
-
-
-// const cellTest = document.querySelector('td[data-name="1"]');
-
-// cellTest.addEventListener('click', test);
-
 // Player factory
-const Player = (name, mark) => {
-  return { name, mark };
-};
+const Player = (name, mark) => ({ name, mark });
 
 // Board module
 const board = (() => {
@@ -58,7 +50,6 @@ const game = (() => {
       }
     }
     return true;
-
   };
 
   return { checkWinner, checkDraw };
@@ -79,7 +70,7 @@ const gameController = (() => {
     players.push(player1, player2);
     startGameSection.classList.toggle('hidden');
     tictactoe.classList.toggle('hidden');
-    
+
     return { players };
   };
 
@@ -94,10 +85,11 @@ const gameController = (() => {
     board.arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
     turn = true;
     cells.forEach((cell) => {
-      cell.innerHTML = '';
+      const auxCell = cell;
+      auxCell.innerHTML = '';
     });
   };
-  
+
   // eslint-disable-next-line func-names
   const render = function () {
     const currentPlayer = turn ? players[0] : players[1];
@@ -112,14 +104,12 @@ const gameController = (() => {
           endDiv.classList.toggle('hidden');
           tictactoe.classList.add('disabled');
           endTitle.innerHTML = `${currentPlayer.name} wins!`;
-        }
-        else if (game.checkDraw(board.arr)) {
+        } else if (game.checkDraw(board.arr)) {
           endDiv.classList.toggle('hidden');
           endTitle.innerHTML = `
                                 ${players[0].name} - ${players[1].name} <br> DRAW!
                                 `;
         }
-        
       }
     });
   };
