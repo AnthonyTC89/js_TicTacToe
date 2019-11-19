@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-alert */
 
 const input1 = document.querySelector('#player1');
@@ -24,21 +25,26 @@ const board = (() => {
 
 // Game module
 const game = (() => {
-  const checkHorizontal = (arr) => (
-    (arr[0] === arr[1] && arr[1] === arr[2])
+  const checkHorizontal = (arr) => {
+    return (arr[0] === arr[1] && arr[1] === arr[2])
     || (arr[3] === arr[4] && arr[4] === arr[5])
-    || (arr[6] === arr[7] && arr[7] === arr[8]));
+    || (arr[6] === arr[7] && arr[7] === arr[8]);
+  };
 
-  const checkVertical = (arr) => (
-    (arr[0] === arr[3] && arr[3] === arr[6])
+  const checkVertical = (arr) => {
+    return (arr[0] === arr[3] && arr[3] === arr[6])
     || (arr[1] === arr[4] && arr[4] === arr[7])
-    || (arr[2] === arr[5] && arr[5] === arr[8]));
+    || (arr[2] === arr[5] && arr[5] === arr[8]);
+  };
 
-  const checkDiagonal = (arr) => (
-    (arr[0] === arr[4] && arr[4] === arr[8])
-    || (arr[6] === arr[4] && arr[4] === arr[2]));
+  const checkDiagonal = (arr) => {
+    return (arr[0] === arr[4] && arr[4] === arr[8])
+    || (arr[6] === arr[4] && arr[4] === arr[2]);
+  };
 
-  const checkWinner = (arr) => (checkDiagonal(arr) || checkHorizontal(arr) || checkVertical(arr));
+  const checkWinner = (arr) => {
+    return checkDiagonal(arr) || checkHorizontal(arr) || checkVertical(arr);
+  };
 
   const checkDraw = (arr) => {
     for (let i = 0; i < arr.length; i += 1) {
@@ -118,8 +124,9 @@ const gameController = (() => {
   return { startGame, render, restartGame };
 })();
 
-cells.forEach((cell) => cell.addEventListener('click', gameController.render));
+cells.forEach((cell) => {
+  return cell.addEventListener('click', gameController.render);
+});
 
 btnStart.addEventListener('click', gameController.startGame);
-// btnStart.addEventListener('click', gameController.render);
 restart.addEventListener('click', gameController.restartGame);
