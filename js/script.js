@@ -48,7 +48,20 @@ const game = (() => {
 
   const checkWinner = (arr) => (checkDiagonal(arr) || checkHorizontal(arr) || checkVertical(arr));
 
-  return { checkWinner };
+  const checkDraw = (arr) => {
+    for (let i = 0; i < arr.length; i += 1) {
+      const element = arr[i];
+
+      // eslint-disable-next-line no-restricted-globals
+      if (!isNaN(element)) {
+        return false;
+      }
+    }
+    return true;
+
+  };
+
+  return { checkWinner, checkDraw };
 })();
 
 
@@ -99,7 +112,11 @@ const gameController = (() => {
           endDiv.classList.toggle('hidden');
           endTitle.innerHTML = `${currentPlayer.name} wins!`;
         }
-          
+        else if (game.checkDraw(board.arr)) {
+          endDiv.classList.toggle('hidden');
+          endTitle.innerHTML = `${players[0].name} - ${players[1].name} DRAW!`;
+        }
+        
       }
     });
   };
