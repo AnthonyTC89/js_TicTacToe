@@ -86,6 +86,7 @@ const gameController = (() => {
   const restartGame = () => {
     startGameSection.classList.toggle('hidden');
     tictactoe.classList.toggle('hidden');
+    tictactoe.classList.remove('disabled');
     endDiv.classList.toggle('hidden');
     input1.value = '';
     input2.value = '';
@@ -106,15 +107,17 @@ const gameController = (() => {
         board.arr[key] = currentPlayer.mark;
         turn = !turn;
         cells[key].innerHTML = currentPlayer.mark;
-        // console.log(board.arr[key]);
+
         if (game.checkWinner(board.arr)) {
-          // console.log('win!');
           endDiv.classList.toggle('hidden');
+          tictactoe.classList.add('disabled');
           endTitle.innerHTML = `${currentPlayer.name} wins!`;
         }
         else if (game.checkDraw(board.arr)) {
           endDiv.classList.toggle('hidden');
-          endTitle.innerHTML = `${players[0].name} - ${players[1].name} DRAW!`;
+          endTitle.innerHTML = `
+                                ${players[0].name} - ${players[1].name} <br> DRAW!
+                                `;
         }
         
       }
