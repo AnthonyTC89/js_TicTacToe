@@ -1,0 +1,24 @@
+{
+  "name": "js_tictactoe",
+  "version": "1.0.0",
+  "description": "Tic Tac Toe game you can play in your browser!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonyTC89/js_TicTacToe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnthonyTC89/js_TicTacToe/issues"
+  },
+  "homepage": "https://github.com/AnthonyTC89/js_TicTacToe#readme",
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}

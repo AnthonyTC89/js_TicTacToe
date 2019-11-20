@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Exo+2:400,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/style.css">
+  <title>Tic Tac Toe</title>
+</head>
+<body>
+  <header class="header">
+    <h1 class="title">Tic Tac Toe</h1>
+  </header>
+
+  <div class="container">
+
+    <section class="game-start" id="start-game-section">
+      <input type="text" class="player" id="player1" placeholder="Player 1">
+      <input type="text" class="player" id="player2" placeholder="Player 2">
+      <button class="btn-start" id="btn-start">Start game</button>
+    </section>
+    
+    <section class="game hidden" id="tictactoe">
+      <table class="table">
+        <tbody>
+          <tr class="trow">
+            <td class="tcell" data-key="0" data-name="0"></td>
+            <td class="tcell" data-key="1" data-name="1"></td>
+            <td class="tcell" data-key="2" data-name="2"></td>
+          </tr>
+
+          <tr class="trow">
+            <td class="tcell" data-key="3" data-name="3"></td>
+            <td class="tcell" data-key="4" data-name="4"></td>
+            <td class="tcell" data-key="5" data-name="5"></td>
+          </tr>
+
+          <tr class="trow">
+            <td class="tcell" data-key="6" data-name="6"></td>
+            <td class="tcell" data-key="7" data-name="7"></td>
+            <td class="tcell" data-key="8" data-name="8"></td>
+          </tr>
+          
+        </tbody>
+      </table>
+
+    </section>
+    
+    <section class="end-game hidden">
+      <div class="restart-div">
+        <h2 class="restart-title" id="restart-title">You Won!</h2>
+        <button id="restart" class="btn-start">restart</button>
+      </div>
+    </section>
+  </div>
+  
+  <script src="js/script.js"></script>
+</body>
+</html>
