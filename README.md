@@ -1,40 +1,54 @@
-# JavaScript TicTacToe Game
+<p align="center">
+  <h1 align="center">TIC-TAC-TOE GAME</h1>
 
-## About The Project
+  <p align="center">
+    Project Create with HTML, CSS and JAVASCRIPT.
+    <br>
+    <br>
+    <a href="https://anthonytc89.github.io/js_TicTacToe" target="_blank">Live Demo</a>
+    .
+    <a href="https://github.com/AnthonyTC89/js_TicTacToe/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/AnthonyTC89/js_TicTacToe/issues">Request Feature</a>
+  </p>
+  <br>
+</p>
 
-This is a Tic Tac Toe game that you can play on your browser implementing the use of IIFE modules and Factory functions in JavaScript. 
+  ![Screenshot](/screenshots/01.png)
 
-More details: https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+
+* [About the Project](#about-the-project)
+* [Main Features](#main-features)
+* [Built With](#built-with)
+* [Installation](#installation)
+* [Contact](#Contact)
+
+<!-- ABOUT THE PROJECT -->
+### About The Project
+
+This project is part of the course [The Odin Project](https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript). The goal of the project is create a Tic Tac Toe game that you can play on your browser implementing the use of IIFE modules and Factory functions in JavaScript. [Rules](https://en.wikipedia.org/wiki/Tic-tac-toe)
+
+### Main Features
+
+* Set players to start the game.
+* Select turn by turn one cell in the board.
+* The Game continue until get a winner or set a Draw.
 
 ### Built With
 
-* HTML
-* CSS
-* JavaScript
-
-## Getting Started
-
-To get a local copy up and running follow these simple steps.
-
+* [HTML](https://www.w3.org/html/)
+* [CSS](https://www.w3.org/Style/CSS/)
+* [Bootstrap](https://getbootstrap.com/)
+* [JavaScript](https://www.javascript.com/)
 
 ### Installation
- 
-1. Clone the repo
-  `https://github.com/AnthonyTC89/js_TicTacToe`
-2. Open the file 'index.html' in a browser.
 
-## Authors
+  1. Clone the repository [js_TicTacToe](https://github.com/AnthonyTC89/js_TicTacToe)
+  2. Go to the folder app and open the `index.html` in a browser.
 
-* [Anthony Tapia](https://github.com/AnthonyTC89)
-* [Radouane Khiri](https://github.com/Redvanisation)
+### Contact
 
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+* **[Anthony Tapia Cossio](https://github.com/AnthonyTC89) - [Linkedin](linkedin.com/in/anthony-tapia-cossio) - [Twitter](https://twitter.com/ptonypTC) - [Portfolio](https://portfolio-anthony.herokuapp.com/)**
+* **[Radouane Khiri](https://github.com/Redvanisation) - [Linkedin](https://www.linkedin.com/in/redvan/) - [Twitter](https://twitter.com/redvanisation)**
